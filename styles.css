@@ -32,7 +32,7 @@ body {
 }
 
 #title {
-  font-size: clamp(75px, 15vw, 150px);
+  font-size: 100px;
   font-weight: 500;
   line-height: 1;
 }
@@ -47,7 +47,17 @@ body {
   margin-top: 28px;
 }
 
-.slack-button a,
+.slack-button a {
+  text-decoration: none;
+  color: #000;
+  background: #fff;
+  padding: 10px;
+  font-size: 32px;
+  border: 2px solid #000;
+  box-shadow: 0 0 0 #000;
+  transition: all 0.1s ease;
+}
+
 .top-buttons a {
   text-decoration: none;
   color: #000;
@@ -59,7 +69,11 @@ body {
   transition: all 0.1s ease;
 }
 
-.slack-button a:hover,
+.slack-button a:hover {
+  transform: translate(0px, -4px);
+  box-shadow: 0px 4px 0 #000;
+}
+
 .top-buttons a:hover {
   transform: translate(4px, 4px);
   box-shadow: 0 0 0 #000;
@@ -183,7 +197,6 @@ body {
   align-items: center;
 }
 
-/* BIG TITLE (matches hero scale) */
 .big-title {
   font-size: clamp(75px, 15vw, 150px);
   font-weight: 600;
@@ -191,7 +204,6 @@ body {
   margin-bottom: 80px;
 }
 
-/* GRID */
 .how-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -200,20 +212,17 @@ body {
   width: 100%;
 }
 
-/* BLOCKS */
 .how-block {
   display: flex;
   flex-direction: column;
 }
 
-/* HEADINGS */
 .how-block h3 {
   font-size: 40px;
   font-weight: 600;
   margin-bottom: 20px;
 }
 
-/* LISTS */
 .how-block ul {
   margin-left: 20px;
 }
@@ -223,7 +232,6 @@ body {
   margin-bottom: 12px;
 }
 
-/* HIGHLIGHT TEXT */
 .highlight {
   font-size: 30px;
   line-height: 1.4;
