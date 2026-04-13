@@ -1,15 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
-html {
-  scroll-behavior: smooth;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -67,7 +57,7 @@ body {
   box-shadow: 0 0 0 #000;
   display: inline-block;
   font-weight: 600;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
 .top-buttons a {
@@ -80,7 +70,7 @@ body {
   box-shadow: 0 0 0 #000;
   display: inline-block;
   font-weight: 600;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
 .slack-button a:hover,
@@ -246,199 +236,4 @@ body {
   text-decoration-color: #444;
   text-underline-offset: 0.12em;
   text-decoration-thickness: 2px;
-}
-
-.docs-shell {
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 15% 85%;
-  background: #fff;
-  background-size: 42px 42px;
-}
-
-.docs-sidebar {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  display: grid;
-  grid-template-rows: auto repeat(4, minmax(78px, 124px));
-  align-content: start;
-  gap: 10px;
-  padding: 20px 10px 12px;
-  border-right: 3px solid #000;
-}
-
-.docs-sidebar > h1 {
-  color: #000;
-  font-size: clamp(15px, 1.3vw, 24px);
-  line-height: 1;
-  padding: 0 4px;
-}
-
-.docs-sidebar h1 {
-  opacity: 0.5;
-  font-size: clamp(12px, 1.15vw, 24px);
-}
-.docs-tab {
-  width: 100%;
-  min-height: 78px;
-  border: 2px solid #000;
-  background: #fff;
-  color: #000;
-  text-align: left;
-  cursor: pointer;
-  font-weight: 800;
-  line-height: 1.2;
-  padding: 14px 10px;
-  transform: translate(0, 0);
-  box-shadow: 0 0 0 #000;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-}
-
-.docs-tab span {
-  display: block;
-  font-size: clamp(14px, 1.15vw, 28px);
-}
-
-.docs-tab:hover,
-.docs-tab:focus-visible {
-  background: #fff;
-  transform: translate(-1px, -1px);
-  box-shadow: 3px 3px 0 #000;
-}
-
-.docs-tab.is-active {
-  background: #fff;
-  color: #000;
-  box-shadow: 6px 6px 0 #000;
-  transform: translate(-2px, -2px);
-}
-
-.docs-body {
-  background: #f2f2f2;
-  border-top: solid #000;
-  padding: 34px 4vw 56px;
-  display: flex;
-  justify-content: center;
-}
-
-.docs-panel {
-  width: min(940px, 100%);
-}
-
-.docs-header {
-  display: flex;
-  gap: 14px;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 18px;
-}
-
-.docs-header h1 {
-  font-size: clamp(34px, 3.8vw, 62px);
-  line-height: 0.98;
-  color: #000;
-}
-
-.docs-home-link {
-  display: inline-block;
-  text-decoration: none;
-  color: #000;
-  border: 2px solid #000;
-  background: #fff;
-  padding: 8px 12px;
-  font-size: 16px;
-  font-weight: 700;
-  white-space: nowrap;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
-
-.docs-home-link:hover {
-  transform: translate(-1px, -1px);
-  box-shadow: 3px 3px 0 #000;
-}
-
-.docs-content {
-  background: #fff;
-  border: 2px solid #000;
-  padding: 24px;
-  box-shadow: 6px 6px 0 #000;
-  color: #000;
-  font-size: clamp(19px, 1.45vw, 32px);
-  line-height: 1.62;
-}
-
-.docs-content h1,
-.docs-content h2,
-.docs-content h3,
-.docs-content h4,
-.docs-content h5,
-.docs-content h6 {
-  margin: 1.1em 0 0.4em;
-  line-height: 1.2;
-}
-
-.docs-content p,
-.docs-content ul,
-.docs-content ol,
-.docs-content blockquote,
-.docs-content pre,
-.docs-content table {
-  margin: 0.72em 0;
-}
-
-.docs-content ul,
-.docs-content ol {
-  margin-left: 1.3em;
-}
-
-.docs-content code {
-  background: #fff;
-  border: 1px solid #000;
-  border-radius: 3px;
-  padding: 0.08em 0.32em;
-  font-size: 0.88em;
-}
-
-.docs-content pre {
-  background: #fff;
-  border: 1px solid #000;
-  padding: 12px;
-  overflow-x: auto;
-}
-
-.docs-content pre code {
-  background: transparent;
-  border: 0;
-  padding: 0;
-}
-
-@media (max-width: 900px) {
-  .docs-shell {
-    grid-template-columns: 1fr;
-  }
-
-  .docs-sidebar {
-    position: static;
-    height: auto;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto repeat(2, minmax(74px, 1fr));
-    padding: 12px;
-    border-right: 0;
-    border-bottom: 3px solid #000;
-  }
-
-  .docs-sidebar > h1 {
-    grid-column: 1 / -1;
-  }
-
-  .docs-body {
-    border-top: 0;
-    padding-top: 20px;
-  }
-
-  .docs-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
 }
