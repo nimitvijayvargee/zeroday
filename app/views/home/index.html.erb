@@ -1,0 +1,116 @@
+<main id="top">
+  <section class="hero">
+    <img src="https://assets.hackclub.com/flag-orpheus-top-bw.svg" alt="Hack Club logo" loading="eager">
+
+    <div class="top-buttons">
+      <a href="<%= @submit_url %>">submit</a>
+      <a href="#how">docs</a>
+    </div>
+
+    <h1 id="title">zeroday</h1>
+    <p id="subtitle">get up to $100 to build projects around the raspberry pi zero 2w</p>
+
+    <div class="slack-button">
+      <a href="https://hackclub.com/slack" target="_blank" rel="noreferrer">Join the Slack!</a>
+    </div>
+  </section>
+
+  <section class="prizes" id="prizes">
+    <div class="prize-title">
+      <h2>Earn cool prizes!</h2>
+      <p>(and more to come)</p>
+    </div>
+
+    <div class="carousel">
+      <div class="track" data-direction="-1" data-speed="110" aria-label="Prize carousel">
+        <% (@prize_cards * 3).each do |card| %>
+          <article class="polaroid">
+            <img src="<%= card[:image_url] %>" alt="<%= card[:image_alt] %>" loading="lazy">
+            <p><%= card[:title] %></p>
+          </article>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <section class="skills" id="skills">
+    <div class="prize-title">
+      <h2>Learn cool skills!</h2>
+    </div>
+
+    <div class="carousel">
+      <div class="track" data-direction="1" data-speed="110" aria-label="Skills carousel">
+        <% (@skill_cards * 3).each do |card| %>
+          <article class="polaroid">
+            <img src="<%= card[:image_url] %>" alt="<%= card[:image_alt] %>" loading="lazy">
+            <p><%= card[:title] %></p>
+          </article>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <section class="how" id="how">
+    <h2 class="big-title">How does this work?</h2>
+
+    <div class="how-grid">
+      <article class="how-block">
+        <h3>What do I do?</h3>
+        <ul>
+          <li>Build something with a Raspberry Pi Zero 2W</li>
+          <li>Design, document, and publish it</li>
+          <li>Create renders and details</li>
+          <li>Open source it on GitHub;</li>
+          <li>and finally get the money to make it real!</li>
+        </ul>
+      </article>
+
+      <article class="how-block">
+        <h3>How much time?</h3>
+        <p class="highlight">You get 14 days to work on your project. Stay consistent and use your time well.</p>
+
+        <h3>Voting?</h3>
+        <p class="highlight">After the 14 days are up, we'll open up voting to the public! The top prizes from voting will receive extra prizes in addition!</p>
+      </article>
+
+      <article class="how-block">
+        <h3>Are there any submission guidelines?</h3>
+        <ul>
+          <li>You should log your work daily in a Journal.md file in your repository!</li>
+          <li>Commit frequently to your repository! This helps us filter fraud :)</li>
+          <li>Make it polished and high quality, go the extra mile</li>
+          <li>Make thorough journals, and attach images!</li>
+          <li>Don't copy tutorials, try to branch off from existing projects! Taking inspiration is okay, and encouraged!</li>
+        </ul>
+      </article>
+
+      <article class="how-block">
+        <h3>Budget</h3>
+        <ul>
+          <li>Start with a base budget of $30</li>
+          <li>Work on your project for at least one hour a day</li>
+          <li>For every day you work at least one hour, earn $5 towards your budget!</li>
+          <li>Earn up to $100 in total!</li>
+          <li>The Pi Zero 2W and any and all 3D printed parts are on us!</li>
+        </ul>
+
+        <h3>Do I have to journal?</h3>
+        <p class="highlight">Journalling is not necessary, you may also use Lapse, our own timelapse videojournal tool! Check it out <a href="https://lapse.hackclub.com" target="_blank" rel="noreferrer">here</a>.</p>
+      </article>
+
+      <article class="how-block">
+        <h3>What if I have questions?</h3>
+        <p class="highlight">Join the Slack and ask in #zeroday! You can also DM me (@nimit) on Slack for any questions related to the event!</p>
+
+        <h3>What if I need help?</h3>
+        <p class="highlight">Join the Slack and ask around in #electronics and #zeroday! We will also run lock-in calls where you can share your progress and ask for advice!</p>
+      </article>
+
+      <article class="how-block">
+        <h3>What are the extra prizes?</h3>
+        <p class="highlight">If you ship a complete build within 4 weeks of receiving your grant, you get to choose between one of the many extra prizes! More details to be confirmed.</p>
+        <p class="highlight">Winners of the jam will also receive a special prize such as a Bambu Labs A1 Mini or a Raspberry Pi 5!</p>
+      </article>
+    </div>
+  </section>
+</main>
