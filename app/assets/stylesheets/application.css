@@ -340,7 +340,7 @@ body {
   color: #000;
 }
 
-.docs-home-link {
+.docs-top-button {
   display: inline-block;
   text-decoration: none;
   color: #000;
@@ -353,7 +353,7 @@ body {
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-.docs-home-link:hover {
+.docs-top-button:hover {
   transform: translate(-1px, -1px);
   box-shadow: 3px 3px 0 #000;
 }
