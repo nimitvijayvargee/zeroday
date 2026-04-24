@@ -1,0 +1,33 @@
+<% content_for :title, "Docs | Zeroday" %>
+
+<main class="docs-shell" data-docs-browser>
+  <aside class="docs-sidebar" aria-label="Documentation files">
+    <h1 class="docs-sidebar-title"> $ zeroday/docs </h1>
+    <% @doc_files.each_with_index do |doc, index| %>
+      <button
+        type="button"
+        class="docs-tab<%= " is-active" if index.zero? %>"
+        data-doc-tab
+        data-doc-index="<%= index %>"
+      >
+        <span><%= doc[:title] %></span>
+      </button>
+    <% end %>
+  </aside>
+
+  <section class="docs-body">
+    <div class="docs-panel">
+      <header class="docs-header">
+        <h1 data-doc-title>Loading...</h1>
+        <!--<a class="docs-top-button" href="#top"><img src="https://icons.hackclub.com/api/icons/0xffffff/brightness-low-fill" alt="" width="24" height="24"></a>-->
+        <a class="docs-top-button" href="<%= home_path %>">Back to Home</a>
+      </header>
+
+      <article class="docs-content" data-doc-content>
+        <p>Loading documentation...</p>
+      </article>
+    </div>
+  </section>
+
+  <script type="application/json" data-documents-json><%= raw(json_escape(@doc_files.to_json)) %></script>
+</main>

@@ -1,6 +1,8 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import "@hotwired/turbo-rails"
 import "controllers"
+import { marked } from "marked"
+import DOMPurify from "dompurify"
 
 const marqueeControllers = new Map()
 
@@ -129,5 +131,71 @@ function teardownMarquees() {
 	marqueeControllers.clear()
 }
 
+function setupDocsBrowser() {
+	const root = document.querySelector("[data-docs-browser]")
+	if (!root || root.dataset.bound === "true") {
+		return
+	}
+
+	const tabs = Array.from(root.querySelectorAll("[data-doc-tab]"))
+	const titleNode = root.querySelector("[data-doc-title]")
+	const contentNode = root.querySelector("[data-doc-content]")
+	const dataNode = root.querySelector("[data-documents-json]")
+
+	if (tabs.length === 0 || !titleNode || !contentNode || !dataNode) {
+		return
+	}
+
+	let documents
+	try {
+		documents = JSON.parse(dataNode.textContent || "[]")
+	} catch (_error) {
+		documents = []
+	}
+
+	if (!Array.isArray(documents) || documents.length === 0) {
+		contentNode.innerHTML = "<p>No documentation files are available.</p>"
+		return
+	}
+
+	marked.setOptions({
+		gfm: true,
+		breaks: true
+	})
+
+	const setActive = (activeTab) => {
+		tabs.forEach((tab) => {
+			tab.classList.toggle("is-active", tab === activeTab)
+		})
+	}
+
+	const renderDoc = (tab) => {
+		const index = Number(tab.dataset.docIndex || 0)
+		const selectedDoc = documents[index]
+
+		setActive(tab)
+
+		if (!selectedDoc) {
+			titleNode.textContent = "Documentation"
+			contentNode.innerHTML = "<p>Could not find this section.</p>"
+			return
+		}
+
+		titleNode.textContent = selectedDoc.title || "Documentation"
+		const rendered = marked.parse(selectedDoc.markdown || "")
+		contentNode.innerHTML = DOMPurify.sanitize(rendered, { USE_PROFILES: { html: true } })
+	}
+
+	tabs.forEach((tab) => {
+		tab.addEventListener("click", () => {
+			renderDoc(tab)
+		})
+	})
+
+	root.dataset.bound = "true"
+	renderDoc(tabs[0])
+}
+
 document.addEventListener("turbo:load", setupMarquees)
+document.addEventListener("turbo:load", setupDocsBrowser)
 document.addEventListener("turbo:before-cache", teardownMarquees)

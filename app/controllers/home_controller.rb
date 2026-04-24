@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @submit_url = "#"
+    @submit_url = "https://youtu.be/QDia3e12czc?si=d9MWjEZoTh6l7y85"
 
     @prize_cards = [
       {
@@ -57,5 +57,42 @@ class HomeController < ApplicationController
         image_alt: "Soldering station setup"
       }
     ]
+  end
+
+  def docs
+    doc_specs = [
+      {
+        title: "DIY Guide",
+        file: "diy-guide.md"
+      },
+      {
+        title: "Adding More Parts",
+        file: "adding-more-parts.md"
+      },
+      {
+        title: "Resources and Tips",
+        file: "resources-and-tips.md"
+      },
+      {
+        title: "Submit Your Project",
+        file: "submit-your-project.md"
+      }
+    ]
+
+    docs_directory = Rails.root.join("app", "assets", "docs")
+
+    @doc_files = doc_specs.map do |doc|
+      absolute_path = docs_directory.join(doc[:file])
+      markdown = if absolute_path.exist?
+        absolute_path.read
+      else
+        "# Missing document\n\nCould not find docs/#{doc[:file]} in app/assets/docs."
+      end
+
+      {
+        title: doc[:title],
+        markdown: markdown
+      }
+    end
   end
 end
